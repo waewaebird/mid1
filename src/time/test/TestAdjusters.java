@@ -11,7 +11,7 @@ public class TestAdjusters {
 
         LocalDate ld = LocalDate.of(year,month,1);
 
-        System.out.println("firstDayOfWeek = " + TemporalAdjusters.firstDayOfMonth());
-        System.out.println("lastDayOfWeek = " + TemporalAdjusters.firstDayOfMonth());
+        System.out.println("firstDayOfWeek = " + DayOfWeek.from(ld.with(TemporalAdjusters.firstDayOfMonth())));
+        System.out.println("lastDayOfWeek = " + DayOfWeek.from(ld.with(TemporalAdjusters.lastDayOfMonth())));
     }
 }
