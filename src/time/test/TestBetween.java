@@ -10,6 +10,7 @@ public class TestBetween {
         LocalDate endDate = LocalDate.of(2024,11,21);
         
         Period period = Period.between(startDate,endDate);
+        long betweenDays = ChronoUnit.DAYS.between(startDate,endDate);
 
         System.out.println("시작 날짜: " + startDate);
         System.out.println("목표 날짜: " + endDate);
