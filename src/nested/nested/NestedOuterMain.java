@@ -1,4 +1,5 @@
 package nested.nested;
+//정적 중첩 클래스 패키지
 
 public class NestedOuterMain {
     public static void main(String[] args) {
