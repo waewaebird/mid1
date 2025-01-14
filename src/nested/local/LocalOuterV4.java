@@ -2,7 +2,7 @@ package nested.local;
 
 import java.lang.reflect.Field;
 
-public class LocalOuterV3 {
+public class LocalOuterV4 {
     private int outInstanceVar = 3;
 
     public Printer process(final int paramVar) {
@@ -22,13 +22,15 @@ public class LocalOuterV3 {
 
             }
         }
-        LocalPrinter printer = new LocalPrinter();
-        //printer.print(); // 를 여기서 실행하지 않고 Printer 인스턴스만 반환한다.
+        LocalPrinter printer = new LocalPrinter(); // 인스턴스 생성 시점에 지역변수를 캡쳐
+        // 만약 locarVar의 값을 변경한다면? 다시 캡쳐해야 하나? 동기화문제 발생
+        // localVar = 10;
+        // paramVar = 20;
         return printer;
     }
 
     public static void main(String[] args) {
-        LocalOuterV3 localOuter = new LocalOuterV3();
+        LocalOuterV4 localOuter = new LocalOuterV4();
         Printer printer = localOuter.process(2);
         
         //printer.print()를 나중에 실행한다.  process()의 스택프레임이 사라진 이후에 실행

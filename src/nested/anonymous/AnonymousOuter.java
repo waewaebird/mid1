@@ -1,12 +1,15 @@
-package nested.local;
+package nested.anonymous;
 
-public class LocalOuterV2 {
+import nested.local.Printer;
+
+public class AnonymousOuter {
     private int outInstanceVar = 3;
 
     public void process(int paramVar) {
         int localVar = 1;
 
-        class LocalPrinter implements Printer {
+        Printer printer = new Printer() { // 인터페이스를 생성하는게 아니라 인터페이스를 구현한 익명클래스를 생성 (혹은 상속받은)
+            //익명 클래스의 본문
             int value = 0;
 
             @Override
@@ -17,13 +20,13 @@ public class LocalOuterV2 {
                 System.out.println("outInstanceVar=" + outInstanceVar);
 
             }
-        }
-        Printer printer = new LocalPrinter();
+        };
         printer.print();
+        System.out.println("printer.class = " + printer.getClass());
     }
 
     public static void main(String[] args) {
-        LocalOuterV2 localOuter = new LocalOuterV2();
-        localOuter.process(2);
+        AnonymousOuter main = new AnonymousOuter();
+        main.process(2);
     }
 }
