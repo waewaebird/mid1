@@ -2,7 +2,7 @@ package nested.anonymous.ex;
 
 import java.util.Random;
 
-public class Ex1RefMainV1 {
+public class Ex1RefMainV5 {
 
     public static void hello(Process process) {
         System.out.println("프로그램 시작");
@@ -15,33 +15,17 @@ public class Ex1RefMainV1 {
         System.out.println("프로그램 종료");
     }
 
-    //정적 중첩 클래스
-    static class Dice implements Process {
-        @Override
-        public void run() {
+    public static void main(String[] args) {
+        System.out.println("Hello 실행");
+        hello(() -> { //람다로 함수를 안지로 전달
             int randomValue = new Random().nextInt(6) + 1;
             System.out.println("주사위 = " + randomValue);
-        }
-    }
+        });
 
-    //정적 중첩 클래스
-    static class Sum implements Process {
-        @Override
-        public void run() {
+        hello(() -> { //람다로 함수를 안지로 전달
             for (int i = 0; i < 3; i++) {
                 System.out.println("i = " + i);
             }
-        }
-    }
-
-    public static void main(String[] args) {
-
-        //메서드만 전달할 수는 없음, 인스턴스는 전달할 수 있음.
-        Dice dice = new Dice();
-        Sum sum = new Sum();
-
-        System.out.println("Hello 실행");
-        hello(dice);
-        hello(sum);
+        });
     }
 }
