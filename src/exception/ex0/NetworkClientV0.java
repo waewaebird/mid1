@@ -16,7 +16,7 @@ public class NetworkClientV0 {
 
     public String send(String data) {
         // 전송 성공
-        System.out.println(address + " 서버에 데어터 전송: " + data);
+        System.out.println(address + " 서버에 데이터 전송: " + data);
         return "success";
     }
 
